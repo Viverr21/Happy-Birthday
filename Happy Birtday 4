@@ -1,0 +1,113 @@
+import turtle
+import time
+
+# Setup screen
+screen = turtle.Screen()
+screen.bgcolor("skyblue")
+screen.title("Happy Birthday Animation!")
+
+# Draw Balloons
+def draw_balloon(x, y, color):
+    balloon = turtle.Turtle()
+    balloon.hideturtle()
+    balloon.speed(0)
+    balloon.penup()
+    balloon.goto(x, y)
+    balloon.pendown()
+    balloon.color(color)
+    balloon.begin_fill()
+    balloon.circle(30)
+    balloon.end_fill()
+    balloon.width(3)
+    balloon.right(90)
+    balloon.forward(70)
+    balloon.penup()
+    balloon.goto(x, y-40)
+    balloon.color("black")
+    balloon.write("🎈", align="center", font=("Arial", 16, "bold"))
+
+# Balloons positions and colors
+balloon_data = [
+    (-200, 100, "red"),
+    (-100, 180, "green"),
+    (0, 150, "yellow"),
+    (100, 200, "purple"),
+    (200, 120, "orange")
+]
+
+for x, y, color in balloon_data:
+    draw_balloon(x, y, color)
+
+# Draw Cake
+cake = turtle.Turtle()
+cake.hideturtle()
+cake.speed(0)
+cake.penup()
+cake.goto(-100, -50)
+cake.pendown()
+cake.color("pink")
+cake.begin_fill()
+for _ in range(2):
+    cake.forward(200)
+    cake.left(90)
+    cake.forward(70)
+    cake.left(90)
+cake.end_fill()
+
+# Candles
+cake.penup()
+cake.goto(-80, 20)
+cake.pendown()
+cake.color("lightyellow")
+for i in range(5):
+    cake.begin_fill()
+    cake.forward(15)
+    cake.left(90)
+    cake.forward(30)
+    cake.left(90)
+    cake.forward(15)
+    cake.left(90)
+    cake.forward(30)
+    cake.left(90)
+    cake.end_fill()
+    cake.penup()
+    cake.forward(35)
+    cake.pendown()
+
+# Flame animation
+def flame(x, y):
+    fl = turtle.Turtle()
+    fl.hideturtle()
+    fl.speed(0)
+    fl.penup()
+    fl.goto(x, y)
+    fl.pendown()
+    fl.color("orange")
+    fl.begin_fill()
+    fl.circle(5)
+    fl.end_fill()
+
+for i in range(5):
+    flame(-72 + i*35, 55)
+
+# Happy Birthday Text Animation
+text = turtle.Turtle()
+text.hideturtle()
+text.speed(0)
+text.penup()
+text.goto(0, -150)
+text.color("magenta")
+for size in range(10, 40, 2):
+    text.clear()
+    text.goto(0, -150)
+    text.write("🎉 Happy Birthday To Me! 🎂", align="center", font=("Comic Sans MS", size, "bold"))
+    time.sleep(0.2)
+
+# Final message
+text.clear()
+text.goto(0, -150)
+text.color("magenta")
+text.write("🎉 Happy Birthday To Me! 🎂", align="center", font=("Comic Sans MS", 36, "bold"))
+
+# Hold window
+turtle.done()
